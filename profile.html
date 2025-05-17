@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="lugo.png" alt="Otaku World Logo" class="logo-img">
+            <span class="logo-text">
+                <span class="otaku">Otaku</span>
+                <span class="world">World</span>
+            </span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+				<li><a href="products.html">Product</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- Cart Section -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-section" id="cart-section">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-total" id="cart-total">
+            Total: $0.00
+        </div>
+        <div class="cart-actions">
+            <button id="checkout-btn" class="btn btn-checkout" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <main>
+        <div class="profile-container">
+            <div class="profile-header">
+                <h2>Your Profile</h2>
+                <div class="profile-picture-container">
+                    <img class="profile-picture" id="profile-picture" src="" alt="Profile Picture">
+                    <div class="upload-area" id="upload-btn-wrapper">
+                        <div class="upload-btn-wrapper">  
+                            <input type="file" id="profile-picture-upload" accept="image/*">
+                        </div>
+                        <div class="file-info" id="file-info"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Display Section -->
+            <div class="profile-info" id="profile-display">
+                <div class="profile-info-item">
+                    <label>Name:</label>
+                    <span id="display-name">Not provided</span>
+                </div>
+                <div class="profile-info-item">
+                    <label>Email:</label>
+                    <span id="display-email">Not provided</span>
+                </div>
+                <div class="profile-info-item">
+                    <label>Phone:</label>
+                    <span id="display-phone">Not provided</span>
+                </div>
+                <div class="profile-info-item">
+                    <label>Address:</label>
+                    <span id="display-address">Not provided</span>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn" id="edit-profile-btn">Edit Profile</button>
+                    <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <!-- Profile Edit Form -->
+            <form id="profile-form" class="hidden">
+                <div class="form-group">
+                    <label for="profile-name">Full Name</label>
+                    <input type="text" id="profile-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-email">Email Address</label>
+                    <input type="email" id="profile-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-phone">Phone Number</label>
+                    <input type="tel" id="profile-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-address">Address</label>
+                    <textarea id="profile-address" class="form-control" placeholder="Enter your full address"></textarea>
+                </div>
+                
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-outline" id="cancel-edit-btn">Cancel</button>
+                    <button type="submit" class="btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </main>
+<footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Otaku World</h3>
+                <p>Your premier destination for authentic anime merchandise and collectibles.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                  
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="shipping.html">Shipping Policy</a></li>
+                    <li><a href="returns.html">Returns & Exchanges</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Bulacan polytechnic college</li>
+                    <li><i class="fas fa-phone"></i> +1 (234) 567-8910</li>
+                    <li><i class="fas fa-envelope"></i> ditokana@otakuworld.com</li>
+                </ul>
+                <div class="newsletter">
+                    <h4>Subscribe to our newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+    </footer>
+
+    <script>
+       
+        let cart = [];
+        
+       
+        let profile = {
+            name: '',
+            email: '',
+            phone: '',
+            address: '',
+            picture: ''
+        };
+        
+        // DOM elements
+        const cartCount = document.querySelector('.cart-count');
+        const cartLink = document.getElementById('cart-link');
+        const cartSection = document.getElementById('cart-section');
+        const overlay = document.getElementById('overlay');
+        const closeCart = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        
+        const profilePicture = document.getElementById('profile-picture');
+        const profilePictureUpload = document.getElementById('profile-picture-upload');
+        const fileInfo = document.getElementById('file-info');
+        const uploadBtnWrapper = document.getElementById('upload-btn-wrapper');
+        const profileForm = document.getElementById('profile-form');
+        const profileDisplay = document.getElementById('profile-display');
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const cancelEditBtn = document.getElementById('cancel-edit-btn');
+        
+        // Display elements
+        const displayName = document.getElementById('display-name');
+        const displayEmail = document.getElementById('display-email');
+        const displayPhone = document.getElementById('display-phone');
+        const displayAddress = document.getElementById('display-address');
+        
+        // Form elements
+        const inputName = document.getElementById('profile-name');
+        const inputEmail = document.getElementById('profile-email');
+        const inputPhone = document.getElementById('profile-phone');
+        const inputAddress = document.getElementById('profile-address');
+
+        // Update cart count
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+            if (cartCount) cartCount.textContent = totalItems;
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                cartTotal.textContent = 'Total: $0.00';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * (item.quantity || 1);
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${(item.quantity || 1) - 1})">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity || 1}" min="1" 
+                                   onchange="updateQuantity(${item.id}, parseInt(this.value))">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${(item.quantity || 1) + 1})">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) return;
+            
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartDisplay();
+            
+            if (cart.length === 0) {
+                hideCart();
+            }
+        }
+
+        function showCart() {
+            cartSection.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideCart() {
+            cartSection.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Load profile data
+        function loadProfile() {
+            if (profile.picture) {
+                profilePicture.src = profile.picture;
+            } else {
+                profilePicture.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E";
+                profilePicture.style.backgroundColor = '#f0f0f0';
+            }
+            
+            displayName.textContent = profile.name || 'Not provided';
+            displayEmail.textContent = profile.email || 'Not provided';
+            displayPhone.textContent = profile.phone || 'Not provided';
+            displayAddress.textContent = profile.address || 'Not provided';
+            
+            // Pre-fill form if data exists
+            inputName.value = profile.name || '';
+            inputEmail.value = profile.email || '';
+            inputPhone.value = profile.phone || '';
+            inputAddress.value = profile.address || '';
+        }
+
+        // Toggle between display and edit modes
+        function toggleEditMode(showForm) {
+            if (showForm) {
+                profileDisplay.classList.add('hidden');
+                profileForm.classList.remove('hidden');
+                uploadBtnWrapper.style.display = 'block';
+                profileForm.classList.add('fade-in');
+            } else {
+                profileDisplay.classList.remove('hidden');
+                profileForm.classList.add('hidden');
+                uploadBtnWrapper.style.display = 'none';
+                profileDisplay.classList.add('fade-in');
+            }
+        }
+
+        // Handle profile picture upload
+        profilePictureUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Validate file type
+                if (!file.type.match('image.*')) {
+                    fileInfo.textContent = 'Please select an image file (JPEG, PNG, etc.)';
+                    fileInfo.style.color = '#e74c3c';
+                    return;
+                }
+                
+                // Validate file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    fileInfo.textContent = 'Image must be less than 2MB';
+                    fileInfo.style.color = '#e74c3c';
+                    return;
+                }
+                
+                fileInfo.textContent = `Selected: ${file.name}`;
+                fileInfo.style.color = '#27ae60';
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    profile.picture = event.target.result;
+                    profilePicture.src = profile.picture;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle profile form submission
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            profile.name = inputName.value.trim();
+            profile.email = inputEmail.value.trim();
+            profile.phone = inputPhone.value.trim();
+            profile.address = inputAddress.value.trim();
+            
+            loadProfile();
+            toggleEditMode(false);
+        });
+
+        // Edit profile button
+        editProfileBtn.addEventListener('click', function() {
+            toggleEditMode(true);
+        });
+
+        // Cancel edit button
+        cancelEditBtn.addEventListener('click', function() {
+            toggleEditMode(false);
+        });
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Event Listeners
+        cartLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showCart();
+        });
+
+        closeCart.addEventListener('click', hideCart);
+        overlay.addEventListener('click', hideCart);
+
+        // Initialize the page
+        window.onload = function() {
+            updateCartCount();
+            updateCartDisplay();
+            loadProfile();
+            // Hide upload button initially
+            uploadBtnWrapper.style.display = 'none';
+        };
+    </script>
+</body>
+</html>

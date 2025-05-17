@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="lugo.png" alt="Otaku World Logo" class="logo-img">
+            <span class="logo-text">
+                <span class="otaku">Otaku</span>
+                <span class="world">World</span>
+            </span>
+        </div>
+        
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Product</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="hero">
+                <h1>Welcome to Otaku World</h1>
+                <p>Your ultimate destination for premium anime merchandise and collectibles</p>
+                <a href="products.html" class="btn">Shop Now</a>
+            </div>
+
+            <div class="featured">
+                <h2>Featured Products</h2>
+                <div class="products">
+                    <!-- Products loaded via JavaScript -->
+                </div>
+            </div>
+
+            <div class="about-section">
+                <div class="about-container">
+                    <h2>About Us</h2>
+                    <p>Founded in 2025, Otaku World is dedicated to bringing the best anime merchandise to fans worldwide. We specialize in high-quality figures, apparel, and collectibles from your favorite series.</p>
+                    <p>Our mission is to create a community where anime lovers can find authentic, officially licensed products at affordable prices, while receiving exceptional customer service.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-box">
+                            <h3>Authentic Products</h3>
+                            <p>All our items are 100% officially licensed and sourced directly from manufacturers.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h3>Fast Shipping</h3>
+                            <p>We ship worldwide with reliable carriers to get your orders to you quickly.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h3>Otaku Community</h3>
+                            <p>Join our growing community of anime fans and collectors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-section" id="cart-section">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            
+        </div>
+        <div class="cart-total" id="cart-total">
+            Total: $0.00
+        </div>
+        <div class="cart-actions">
+            <button id="checkout-btn" class="btn btn-checkout" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Otaku World</h3>
+                <p>Your premier destination for authentic anime merchandise and collectibles.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="shipping.html">Shipping Policy</a></li>
+                    <li><a href="returns.html">Returns & Exchanges</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Bulacan polytechnic college</li>
+                    <li><i class="fas fa-phone"></i> +1 (234) 567-8910</li>
+                    <li><i class="fas fa-envelope"></i> ditokana@otakuworld.com</li>
+                </ul>
+                <div class="newsletter">
+                    <h4>Subscribe to our newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: "Luffy Figure", price: 50.99, image: "luffyfigure.jfif" },
+            { id: 2, name: "Brook Figure", price: 24.99, image: "brookfigure.jfif" },
+            { id: 3, name: "Zoro Figure", price: 42.99, image: "zorofigure.jfif" },
+            { id: 4, name: "Doflamingo Figure", price: 30.99, image: "doflamingofigure.jfif" }
+        ];
+
+        let cart = []; 
+
+        // DOM Elements
+        const cartCount = document.querySelector('.cart-count');
+        const cartLink = document.getElementById('cart-link');
+        const cartSection = document.getElementById('cart-section');
+        const overlay = document.getElementById('overlay');
+        const closeCart = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        function displayProducts() {
+            const container = document.querySelector('.products');
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('${product.image}')"></div>        
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="btn btn-small" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity = (existingItem.quantity || 1) + 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartCount();
+            updateCartDisplay();
+            showCart();
+        }
+
+        function updateCartCount() {
+            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartCount.textContent = total;
+        }
+
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                cartTotal.textContent = 'Total: $0.00';
+                checkoutBtn.disabled = true;
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * (item.quantity || 1);
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${(item.quantity || 1) - 1})">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity || 1}" min="1" 
+                                   onchange="updateQuantity(${item.id}, parseInt(this.value))">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${(item.quantity || 1) + 1})">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+            checkoutBtn.disabled = false;
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) return;
+            
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartDisplay();
+            
+            if (cart.length === 0) {
+                hideCart();
+            }
+        }
+
+        function showCart() {
+            cartSection.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideCart() {
+            cartSection.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function toggleMenu() {
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Checkout functionality
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length > 0) {
+                // Calculate total
+                const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+                
+                // Show checkout summary
+                const itemCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                const itemList = cart.map(item => 
+                    `${item.name} x${item.quantity || 1} - $${(item.price * (item.quantity || 1)).toFixed(2)}`
+                ).join('\n');
+                
+                const confirmation = confirm(
+                    `Checkout Summary:\n\n` +
+                    `Items (${itemCount}):\n${itemList}\n\n` +
+                    `Total: $${total.toFixed(2)}\n\n` +
+                    `Proceed to checkout?`
+                );
+                
+                if (confirmation) {
+                    // In a real application, you would redirect to a payment page here
+                    alert('Thank you for your purchase! Your order has been placed.');
+                    
+                    // Clear cart after checkout
+                    cart = [];
+                    updateCartCount();
+                    updateCartDisplay();
+                    hideCart();
+                }
+            }
+        });
+
+        // Event Listeners
+        cartLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showCart();
+        });
+
+        closeCart.addEventListener('click', hideCart);
+        overlay.addEventListener('click', function() {
+            hideCart();
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        window.onload = () => {
+            displayProducts();
+            updateCartCount();
+            checkoutBtn.disabled = true;
+        };
+    </script>
+</body>
+</html>
